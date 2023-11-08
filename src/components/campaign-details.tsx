@@ -84,16 +84,20 @@ export function CampaignDetails({ id }: { id: string }) {
               </Markdown>
             </div>
 
-            <div className="flex flex-col gap-[16px]">
-              <div className="flex flex-row items-center">
-                <h3 className="font-clash text-[16px] font-[500] leading-[1.2em] sm:text-[18px] lg:text-[22px]">
-                  Challenges
-                </h3>
+            {data.campaign.credentialGroups.length > 0 && (
+              <div className="flex flex-col gap-[16px]">
+                <div className="flex flex-row items-center">
+                  <h3 className="font-clash text-[16px] font-[500] leading-[1.2em] sm:text-[18px] lg:text-[22px]">
+                    Challenges
+                  </h3>
+                </div>
+                <div>
+                  <CampaignCredentials
+                    groups={data.campaign.credentialGroups}
+                  />
+                </div>
               </div>
-              <div>
-                <CampaignCredentials groups={data.campaign.credentialGroups} />
-              </div>
-            </div>
+            )}
           </div>
         </Container>
       </div>
