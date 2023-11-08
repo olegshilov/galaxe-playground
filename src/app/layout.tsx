@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { clashDisplayFont, hkGuiseFont } from "@/lib/fonts";
 import clsx from "clsx";
+import { GQlProvider } from "@/providers/gql-provider";
+import { WagmiProvider } from "@/providers/wagmi-provider";
+import { ConnectButton } from "@/components/connect-button";
+import { Header, Page } from "@/components/layout-components";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -18,7 +22,15 @@ export default function RootLayout({
       lang="en"
       className={clsx(clashDisplayFont.variable, hkGuiseFont.variable)}
     >
-      <body>{children}</body>
+      <body>
+        <WagmiProvider>
+          <GQlProvider>
+            <Page header={<Header isBlurred rightSlot={<ConnectButton />} />}>
+              {children}
+            </Page>
+          </GQlProvider>
+        </WagmiProvider>
+      </body>
     </html>
   );
 }

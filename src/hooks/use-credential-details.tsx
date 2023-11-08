@@ -240,10 +240,10 @@ const CREDS_QUERY = gql`
   }
 `;
 
-export function useCredentialDetails(id: string) {
+export function useCredentialDetails(id: string, address?: string) {
   return useQuery(CREDS_QUERY, {
     variables: {
-      eligibleAddress: "",
+      eligibleAddress: address ?? "",
       id,
     },
   });

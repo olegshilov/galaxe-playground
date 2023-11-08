@@ -7,10 +7,13 @@ import { Container } from "./layout-components";
 import { PendingPage } from "./pending-page";
 import { useCredentialDetails } from "@/hooks/use-credential-details";
 import { useState } from "react";
-import { SpinnerLoader } from ".";
+import { Button } from "./button";
+import { SpinnerLoader } from "./spinner-loader";
+import { useAccount } from "wagmi";
 
 export function CampaignDetails({ id }: { id: string }) {
-  const { loading, error, data } = useCampaignDetails(id);
+  const { address } = useAccount();
+  const { loading, error, data } = useCampaignDetails(id, address);
   console.log("CampaignDetails", { loading, error, data });
 
   if (loading) {
@@ -117,7 +120,8 @@ function CampaignCredentials({ groups }: { groups: any[] }) {
 }
 
 function CredentialDetails({ id }: { id: string }) {
-  const { loading, error, data } = useCredentialDetails(id);
+  const { address } = useAccount();
+  const { loading, error, data } = useCredentialDetails(id, address);
   // console.log("CredentialDetails", { loading, error, data });
   const [isOpen, setOpen] = useState(false);
 
@@ -210,6 +214,22 @@ function CredentialDetails({ id }: { id: string }) {
                     >
                       {data.credential.referenceLink}
                     </Link>
+                  </div>
+                </div>
+                <div className="flex flex-col gap-[4px]">
+                  <div className="font-guise text-[11px] leading-[18px] text-white/50 md:text-[12px] md:leading-[18px]">
+                    Check your eligibility
+                  </div>
+                  <div className="text-[12px] font-[500] leading-[18px] text-white md:text-[14px] md:leading-[22px]">
+                    <Button
+                      onClick={() => {
+                        console.log("check challenge eligibility", {
+                          id: data.credential.id,
+                        });
+                      }}
+                    >
+                      Check
+                    </Button>
                   </div>
                 </div>
               </div>
