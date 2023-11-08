@@ -1,13 +1,17 @@
 import { GQlProvider } from "@/providers/gql-provider";
 import { WagmiProvider } from "@/providers/wagmi-provider";
-import { Header, Page, CampaignList } from "@/components";
+import { CampaignDetails, Header, Page } from "@/components";
 
-export default function Home() {
+export default function CampaignPage({
+  params: { id },
+}: {
+  params: { id: string };
+}) {
   return (
     <WagmiProvider>
       <GQlProvider>
         <Page header={<Header isBlurred />}>
-          <CampaignList />
+          <CampaignDetails id={id} />
         </Page>
       </GQlProvider>
     </WagmiProvider>
