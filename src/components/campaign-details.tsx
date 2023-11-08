@@ -222,7 +222,7 @@ function CredentialDetails({ id }: { id: string }) {
                 </div>
                 <div className="flex flex-col gap-[4px]">
                   <div className="font-guise text-[11px] leading-[18px] text-white/50 md:text-[12px] md:leading-[18px]">
-                    Check your eligibility
+                    Check
                   </div>
                   <div className="text-[12px] font-[500] leading-[18px] text-white md:text-[14px] md:leading-[22px]">
                     <Button
@@ -231,6 +231,7 @@ function CredentialDetails({ id }: { id: string }) {
                           id: data.credential.id,
                         });
                       }}
+                      disabled={!address}
                     >
                       Check
                     </Button>

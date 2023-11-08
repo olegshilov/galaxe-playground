@@ -1,16 +1,18 @@
-import clsx from 'clsx';
+import clsx from "clsx";
 
 export function SpinnerLoader({ className }: { className?: string }) {
   return (
     <div role="status">
       <svg
         aria-hidden="true"
+        width={100}
+        height={101}
         viewBox="0 0 100 101"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         className={clsx(
-          'fill-haqq-orange h-10 w-10 animate-spin text-white/10',
-          className,
+          "fill-haqq-orange h-10 w-10 animate-spin text-white/10",
+          className
         )}
       >
         <path
