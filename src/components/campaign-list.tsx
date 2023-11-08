@@ -24,7 +24,7 @@ export function CampaignList() {
   }
 
   return (
-    <section>
+    <section className="pb-[128px]">
       <div className="py-[32px] lg:py-[68px]">
         <Container>
           <div className="font-clash text-[28px] uppercase leading-none sm:text-[48px] lg:text-[70px]">
